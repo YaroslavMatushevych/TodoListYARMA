@@ -157,7 +157,6 @@ function colorizeAndCreatePriorityItem(priority) {
 }
 
 function makeChangesToLocalStorage(id,item) {
-    console.log(id);
     localStorage.setItem(`${id}`, item);
 }
 
@@ -187,7 +186,7 @@ function deleteToDoItem(target) {
 }
 
 function toggleDoneUndone(target) {
-    let checkInput = target.parentNode.querySelector('[name=done-check]');
+    let checkInput = target.closest('.todo-item').querySelector('[name=done-check]');
     target.closest('.todo-item').querySelector('.edit-icon').classList.toggle("edit-forbidden");
     if (!checkInput.getAttribute('checked')) {
         checkInput.setAttribute('checked', 'checked');
