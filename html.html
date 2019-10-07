@@ -1,0 +1,78 @@
+ <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>ToDo List - YARMA</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+        <link rel = "stylesheet" href = "css/reset.css">
+        <link rel = "stylesheet" href = "css/style.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Bad+Script" rel="stylesheet">
+    </head>
+    <body>
+    <header id="header-block" class="header">
+        <div>
+            <h2 class="heading">My To Do List</h2>
+        </div>
+        <div class="header-btn-container">
+            <button class="open-modal-btn btn"><i class="fas fa-plus"></i>Add ToDo</button>
+        </div>
+        <div class="search-container">
+            <input type="text" class="search-input" id="searchInput" onkeyup="doSearch()" placeholder="Search text">
+        </div>
+    </header>
+    <main id="main-block">
+        <div class="overlay overlay-hidden">
+            <div class="modal">
+                <header class="modal-header">
+                    <h2 class="modal-heading">ToDo Item</h2>
+                    <i class="fas fa-times cross"></i>
+                </header>
+                <form class="modal-form" id="modal-form">
+                    <p class="info-input-descript">Enter your name</p>
+                    <input type="text" name="name" maxlength="20" class="info-input" placeholder="Name" required>
+                    <p class="info-input-descript">Enter description</p>
+                    <input type="text" name="description" class="info-input" placeholder="Description">
+                    <p class="info-input-descript">Select priority</p>
+                    <select class="info-input" name="priority" form="modal-form" required>
+                        <option value="high" selected>High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                    <p class="info-input-descript">Enter deadline</p>
+                    <input type="date" name="deadline" class="info-input" placeholder="Deadline">
+                    <button class="cancel-btn btn">Cancel</button>
+                    <button class="edit-btn btn">Edit</button>
+                    <input type="submit" value="Create" class="create-btn btn">
+                </form>
+                <footer>
+                </footer>
+            </div>
+        </div>
+        <div class="todo-list-container">
+                <ul class="todo-header">
+                    <li class="todo-header-item todo-header-done">Done <i class="fas fa-sort-down sort-icon"></i></li>
+                    <li class="todo-header-item">Name</li>
+                    <li class="todo-header-item todo-header-priority">Priority <i class="fas fa-sort-down sort-icon"></i></li>
+                    <li class="todo-header-item">Description</li>
+                    <li class="todo-header-item">Deadline</li>
+                    <li class="todo-header-item">Edit</li>
+                    <li class="todo-header-item">Delete</li>
+                </ul>
+                <div id="todo-list" class="todo-list">
+
+                </div>
+        </div>
+    </main>
+    <footer class="footer-block">
+
+    </footer>
+    <script src="js/main.js"></script>
+    </body>
+    </html>

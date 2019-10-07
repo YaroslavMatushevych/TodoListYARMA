@@ -1,0 +1,275 @@
+body {
+    margin: 0;
+    min-width: 250px;
+    background-color: #5C8BFF;
+    font-family: Roboto, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.priority-high {
+    background-color: red;
+}
+
+.priority-medium {
+    background-color: yellow;
+}
+
+.priority-low {
+    background-color: green;
+}
+
+.header {
+    padding: 20px 40px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.header:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.heading {
+    font-size: 40px;
+}
+
+.header-btn-container, .search-container {
+    align-self: flex-end;
+    margin-right: 5%;
+}
+
+.search-input {
+    width: 250px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 30px;
+}
+
+#main-block {
+    padding: 15px 15px 0;
+}
+
+.todo-list-container {
+    box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.67);
+    background-color: white;
+    width: 95%;
+    margin: 0 auto;
+    min-height: 500px;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.todo-header, .todo-header-item, .todo-item-piece {
+    font-size: 20px;
+    padding: 25px 10px;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+
+.todo-header {
+    box-shadow: 0 5px 15px -10px black;
+    width: 100%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sort-icon {
+    position: relative;
+    top: -2px;
+}
+
+.todo-item {
+    background: #F2F4FF;
+    font-size: 18px;
+    transition: 0.2s;
+    margin: 15px 0;
+    border-radius: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.todo-item:hover {
+    background: #ddd;
+}
+
+.todo-item.done:before {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    border-bottom: 1px solid black;
+    width: 100%;
+}
+
+.done {
+    background-color: #ddd;
+
+}
+
+.todo-item-piece {
+    padding: 26px 10px;
+}
+
+.todo-item-piece:first-child, .todo-header-item:first-child {
+    width: 8%;
+}
+
+.todo-item-piece:nth-child(2), .todo-header-item:nth-child(2) {
+    width: 19%;
+}
+
+.todo-item-piece:nth-child(3), .todo-header-item:nth-child(3) {
+    width: 14%;
+}
+
+.todo-item-piece:nth-child(4), .todo-header-item:nth-child(4) {
+    width: 27%;
+}
+
+.todo-item-piece:nth-child(5), .todo-header-item:nth-child(5) {
+    width: 13%;
+}
+
+.todo-item-piece:nth-child(6), .todo-header-item:nth-child(6) {
+    width: 7%;
+    padding: 20px 10px;
+}
+
+.todo-item-piece:last-child, .todo-header-item:last-child {
+    width: 7%;
+    padding: 20px 10px;
+}
+
+.close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 12px 16px 12px 16px;
+}
+
+.close:hover {
+    background-color: #f44336;
+    color: white;
+}
+
+.btn {
+    padding: 15px;
+    background: #F2F4FF;
+    color: black;
+    text-align: center;
+    font-size: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 30px;
+    margin: 0 auto;
+}
+
+.btn:hover {
+    background-color: #e1e4ee;
+}
+
+.modal {
+    width: 500px;
+    min-height: 300px;
+    z-index: 99999;
+    background-color: #fff;
+    border-radius: 10px;
+    display: -webkit-box;
+    display: flex;
+    padding: 15px;
+    box-sizing: border-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    font-family: Roboto, sans-serif
+}
+
+.modal-header {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    width: 100%
+}
+
+.modal-heading {
+    font-size: 22px;
+}
+
+.cross, .delete-cross, .edit-icon {
+    color: #f44336;
+    font-size: 30px;
+    cursor: pointer;
+    -webkit-transition: .4s;
+    transition: .4s
+}
+
+.edit-icon {
+    color: grey;
+    font-size: 24px;
+}
+
+.modal-form {
+    padding: 10px;
+}
+
+.info-input {
+    font-size: 16px;
+    border: 1px solid #5C8BFF;
+    border-radius: 5px;
+    padding: 5px;
+    width: 400px;
+}
+
+.info-input::placeholder {
+    color: black;
+}
+
+.info-input-descript {
+    margin: 10px 0 5px;
+    font-size: 18px
+}
+
+.create-btn, .cancel-btn, .edit-btn {
+    margin-top: 20px;
+}
+
+.create-btn, .edit-btn {
+    display: none;
+}
+
+.overlay {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(74, 63, 77, .7);
+    -webkit-transition: .4s;
+    transition: .4s;
+    z-index: 999
+}
+
+.overlay-hidden {
+    display: none
+}
