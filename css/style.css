@@ -252,6 +252,16 @@ body {
     display: none;
 }
 
+.error-input {
+    border: 1px solid red;
+}
+
+.error-text {
+    color: red;
+    display: none;
+    font-size: 12px;
+}
+
 .overlay {
     display: -webkit-box;
     display: flex;

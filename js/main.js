@@ -1,5 +1,10 @@
 const todoList = document.getElementById('todo-list');
 const form = document.getElementById(`modal-form`);
+let nameInput = form.querySelector('[name=name]');
+let descriptionInput = form.querySelector('[name=description]');
+let priorityInput = form.querySelector('[name=priority]');
+let deadlineInput = form.querySelector('[name=deadline]');
+let inputDescription = form.querySelector('.info-input-descript');
 let tempTarget;
 
 getToDosFromLocalStorage();
@@ -47,20 +52,25 @@ document.addEventListener('click', (e) => {
 function createNewToDoItem() {
     const div = document.createElement("div");
     div.classList.add('todo-item');
-    let name = form.querySelector('[name=name]').value;
-    let description = form.querySelector('[name=description]').value;
-    let priority = form.querySelector('[name=priority]').value;
-    let deadline = form.querySelector('[name=deadline]').value;
+    let nameInputVal = nameInput.value;
+    let descriptionInputVal = descriptionInput.value;
+    let priorityInputVal = priorityInput.value;
+    let deadlineInputVal = deadlineInput.value;
 
     if (!isValidate()) {
-        alert("Your name must contains only letters, digits and spaces!");
+        nameInput.classList.add("error-input");
+        inputDescription.style.color = 'red';
+        form.getElementsByTagName('span')[0].style.display = 'block';
     } else {
+        nameInput.classList.remove("error-input");
+        inputDescription.style.color = 'black';
+        form.getElementsByTagName('span')[0].style.display = 'none';
         div.innerHTML = `
             <div class="todo-item-piece"><input class="done-checkbox" name="done-check" type="checkbox"></div>
-            <div class="todo-item-piece">${name}</div>
-            ${colorizeAndCreatePriorityItem(priority)}
-            <div class="todo-item-piece">${description}</div>
-            <div class="todo-item-piece">${deadline}</div>
+            <div class="todo-item-piece">${nameInputVal}</div>
+            ${colorizeAndCreatePriorityItem(descriptionInputVal)}
+            <div class="todo-item-piece">${priorityInputVal}</div>
+            <div class="todo-item-piece">${deadlineInputVal}</div>
              <div class="todo-item-piece">
                 <i class="fas fa-edit edit-icon"></i>
              </div>
@@ -93,12 +103,18 @@ function doEdit() {
     parent = parent.getElementsByClassName('todo-item-piece');
 
     if (!isValidate()) {
-        alert("Your name must contain only letters, digits and spaces!");
+        nameInput.classList.add("error-input");
+        inputDescription.style.color = 'red';
+        form.getElementsByTagName('span')[0].style.display = 'block';
     } else {
-        parent[1].innerHTML = form.querySelector('[name=name]').value;
-        parent[2].innerHTML = form.querySelector('[name=priority]').value;
-        parent[3].innerHTML = form.querySelector('[name=description]').value;
-        parent[4].innerHTML = form.querySelector('[name=deadline]').value;
+        nameInput.classList.remove("error-input");
+        inputDescription.style.color = 'black';
+        form.getElementsByTagName('span')[0].style.display = 'none';
+
+        parent[1].innerHTML = nameInput.value;
+        parent[2].innerHTML = priorityInput.value;
+        parent[3].innerHTML = descriptionInput.value;
+        parent[4].innerHTML = deadlineInput.value;
     }
 
     clearModalSettings();
@@ -110,7 +126,7 @@ function closeModal() {
 }
 
 function isValidate() {
-    let name = form.querySelector('[name=name]').value;
+    let name = nameInput.value;
     return /^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/.test(name);
 }
 
