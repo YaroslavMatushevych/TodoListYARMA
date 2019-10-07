@@ -1,10 +1,10 @@
 const todoList = document.getElementById('todo-list');
 const form = document.getElementById(`modal-form`);
-let nameInput = form.querySelector('[name=name]');
-let descriptionInput = form.querySelector('[name=description]');
-let priorityInput = form.querySelector('[name=priority]');
-let deadlineInput = form.querySelector('[name=deadline]');
-let inputDescription = form.querySelector('.info-input-descript');
+const nameInput = form.querySelector('[name=name]');
+const descriptionInput = form.querySelector('[name=description]');
+const priorityInput = form.querySelector('[name=priority]');
+const deadlineInput = form.querySelector('[name=deadline]');
+const inputDescription = form.querySelector('.info-input-descript');
 let tempTarget;
 
 getToDosFromLocalStorage();
@@ -54,6 +54,7 @@ function createNewToDoItem() {
     div.classList.add('todo-item');
     let nameInputVal = nameInput.value;
     let descriptionInputVal = descriptionInput.value;
+    console.log(descriptionInputVal);
     let priorityInputVal = priorityInput.value;
     let deadlineInputVal = deadlineInput.value;
 
@@ -68,8 +69,8 @@ function createNewToDoItem() {
         div.innerHTML = `
             <div class="todo-item-piece"><input class="done-checkbox" name="done-check" type="checkbox"></div>
             <div class="todo-item-piece">${nameInputVal}</div>
-            ${colorizeAndCreatePriorityItem(descriptionInputVal)}
-            <div class="todo-item-piece">${priorityInputVal}</div>
+            ${colorizeAndCreatePriorityItem(priorityInputVal)}
+            <div class="todo-item-piece">${descriptionInputVal}</div>
             <div class="todo-item-piece">${deadlineInputVal}</div>
              <div class="todo-item-piece">
                 <i class="fas fa-edit edit-icon"></i>
