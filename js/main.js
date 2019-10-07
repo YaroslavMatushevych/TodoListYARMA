@@ -79,7 +79,7 @@ function createNewToDoItem() {
 
 function editToDoItem(target) {
     tempTarget = target;
-    let parent = target.parentNode.parentNode;
+    let parent = target.closest('.todo-item');
     parent = parent.getElementsByClassName('todo-item-piece');
     form.querySelector('[name=name]').value = parent[1].innerHTML;
     form.querySelector('[name=description]').value = parent[3].innerHTML;
@@ -89,7 +89,7 @@ function editToDoItem(target) {
 
 function doEdit() {
     console.log(tempTarget);
-    let parent = tempTarget.parentNode.parentNode;
+    let parent = tempTarget.closest('.todo-item');
     parent = parent.getElementsByClassName('todo-item-piece');
 
     if (!isValidate()) {
@@ -140,9 +140,10 @@ function colorizeAndCreatePriorityItem(priority) {
     return div;
 }
 
-// function makeChangesToLocalStorage(id,item) {
-//     localStorage.setItem(`${id}`, item);
-// }
+function makeChangesToLocalStorage(id,item) {
+    console.log(id);
+    localStorage.setItem(`${id}`, item);
+}
 
 function setToLocalStorage(div) {
     let newID = new Date().toISOString().substr(0, 19);
@@ -163,7 +164,7 @@ function getToDosFromLocalStorage() {
 }
 
 function deleteToDoItem(target) {
-    let item = target.parentNode.parentNode;
+    let item = target.closest('.todo-item');
     item.style.display = 'none';
     localStorage.removeItem(item.dataset.id);
 
@@ -171,20 +172,15 @@ function deleteToDoItem(target) {
 
 function toggleDoneUndone(target) {
     let checkInput = target.parentNode.querySelector('[name=done-check]');
-    target.parentNode.parentNode.querySelector('.edit-icon').classList.toggle("edit-forbidden");
+    target.closest('.todo-item').querySelector('.edit-icon').classList.toggle("edit-forbidden");
     if (!checkInput.getAttribute('checked')) {
         checkInput.setAttribute('checked', 'checked');
     } else {
         checkInput.removeAttribute( 'checked');
     }
 
-    if (target.classList.contains('done-checkbox')) {
-        target.parentNode.parentNode.classList.toggle('done');
-        // makeChangesToLocalStorage(target.parentNode.parentNode.dataset.id, target.parentNode.parentNode.innerHTML);
-    } else {
-        target.parentNode.classList.toggle('done');
-        // makeChangesToLocalStorage(target.parentNode.dataset.id, target.parentNode.parentNode.innerHTML);
-    }
+        target.closest('.todo-item').classList.toggle('done');
+        makeChangesToLocalStorage(target.closest('.todo-item').dataset.id, target.closest('.todo-item').outerHTML);
 }
 
 function sortByDefault() {
