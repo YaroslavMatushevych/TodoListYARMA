@@ -35,7 +35,7 @@ document.addEventListener('click', (e) => {
         editToDoItem(target);
     }
     if (target.classList.contains('edit-btn')){
-        doEdit();
+        openEditModal();
     }
     if (target.classList.contains('todo-item-piece') || target.classList.contains('done-checkbox')) {
         toggleDoneUndone(target);
@@ -98,8 +98,7 @@ function editToDoItem(target) {
     form.querySelector('.create-btn').style.display = 'none';
 }
 
-function doEdit() {
-    console.log(tempTarget);
+function openEditModal() {
     let parent = tempTarget.closest('.todo-item');
     parent = parent.getElementsByClassName('todo-item-piece');
 
